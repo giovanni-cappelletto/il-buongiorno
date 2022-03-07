@@ -11,31 +11,56 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-   <header>
-       <h1 class="title">Il Giornalino dell'Istituto</h1>
-       <a href="https://www.donboscopadova.it/" target="blank" class="image-logo">
-           <img src="/images/logo.png" alt="Logo" class="logo">
-       </a>
-   </header>
+    <header>
+    <h1 class="text-logo">Il Giornalino dell'Istituto</h1>
+    <a href="https://www.donboscopadova.it/" target="blank" class="image-logo">
+    <img src="/images/logo.png" alt="Logo" class="logo">
+    </a>
+    </header>
 
-   <main>
-       <div class="container">
-           <h1 class="main-title">Vuoi scoprire le ultime notizie?</h1>
-           <h3 class="main-paragraph">Allora scarica ora il giornalino di <span id="mese">Marzo</span> dell'Istituto!</h3>
-            <a href="/pdf/giornalino.pdf" download="Giornalino" class="btn-active">
-                <button class="btn">Scarica Ora</button>
-            </a>
-            <div class="social">
-                <a href="https://www.instagram.com/ilbuongiornodb/" target="blank">
-                    <i class="fa-brands fa-instagram fa-2x icon"></i>
+    <main>
+    <div class="container">
+    <h1 class="title">Vuoi scoprire le ultime notizie?</h1>
+    <h3 class="paragraph">Allora scarica ora il giornalino di Marzo dell'Istituto!</h3>
+    <a href="/pdf/giornalino.pdf" download="Giornalino" class="btn-active">
+    <button class="btn">Scarica Ora</button>
+    </a>
+    <div class="social">
+    <a href="https://www.instagram.com/ilbuongiornodb/" target="blank">
+    <i class="fa-brands fa-instagram fa-2x icon"></i>
+    </a>
+    <a href="https://github.com/donboscopadova" target="blank">
+    <i class="fa-brands fa-github fa-2x icon"></i>
+    </a>
+    </div>
+    </div>
+    <img src="/images/background.png" alt="Background Image" class="background-image">
+    </main>
+
+    <section>
+        <h1 class="title">Tutti i giornalini</h1>
+        <div class="wrapper">
+            <div class="text-container">
+                <h2 class="title">Giornalino di <span id="month">...</span></h2>
+                <h3 class="paragraph">Scarica il giornalino di <span id="day">...</span>!</h3>
+                <h3 class="paragraph page-number">Numero di pagine: <span id="number">...</span></h3>
+                <h3 class="paragraph arguments">Argomenti: <span id="args">...</span></h3>
+                <a href="/pdf/giornalino.pdf" download="Giornalino" class="btn-active periodical">
+                    <button class="btn">Scarica Ora</button>
                 </a>
-                <a href="" target="blank">
-                    <i class="fa-brands fa-github fa-2x icon"></i>
-                </a>
+                <div class="arrow-container">
+                    <img src="/images/left-arrow.png" alt="Left Arrow" id="left-arrow">
+                    <img src="/images/right-arrow.png" alt="Right Arrow" id="right-arrow">
+                </div>
             </div>
-        </div>
-   </main>
+            <img src="/images/preview.png" alt="Copertina del giornalino" class="preview">
 
-   <div class="background-image"></div>
+        </div>
+        <div class="dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
 </body>
 </html>
