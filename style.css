@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 * {
-    box-sizing: border-box; 
-    margin: 0; 
-    padding: 0; 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 :root {
     --red: hsl(1, 65%, 34%);
     --blue: hsl(225, 33%, 24%);
+    --light-blue: hsl(0, 0%, 82%);
     --white: hsl(0, 0%, 100%);
 }
 
@@ -17,15 +18,16 @@ body {
     overflow-x: hidden;
 }
 
+/* Header */
 header {
-    display: flex; 
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-direction: column; 
+    flex-direction: column;
     padding-block: 25px;
 }
 
-.title {
+.text-logo {
     text-align: center;
     color: var(--blue);
     font-size: clamp(1.3rem, 5vw, 2rem);
@@ -39,37 +41,40 @@ header {
 }
 
 .logo {
-    max-width: 70%;
-    height: auto;
+    max-inline-size: 70%;
+    block-size: auto;
 }
 
+/* Main */
 main {
+    display: grid;
+    grid-template-rows: 160px 1fr;
     margin-block-start: 60px;
 }
 
 .container {
     margin-inline: 35px;
-    width: clamp(70%, 2vw, 100%);
+    inline-size: clamp(70%, 2vw, 100%);
 }
 
-.main-title {
-    position: relative;
+.title {
+position: relative;
     color: var(--blue);
     font-size: clamp(1.8rem, 5vw, 2.4rem);
 }
 
-.main-title::after {
-    content: ''; 
-    background: var(--red); 
-    position: absolute; 
-    bottom: -10px; 
-    left: 0; 
-    width: 40px; 
-    height: 4px; 
+.title::after {
+    content: '';
+    background: var(--red);
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    inline-size: 40px;
+    block-size: 4px;
     border-radius: 5px;
 }
 
-.main-paragraph {
+.paragraph {
     color: var(--blue);
     margin-block-start: 30px;
     font-weight: 400;
@@ -119,17 +124,76 @@ a {
 }
 
 .background-image {
-    background-image: url('/images/desktop/background.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: bottom right;
-    position: absolute; 
-    bottom: 0; 
-    right: 0;
-    max-width: 80%;
-    width: 100%;
-    height: 100%;
+    justify-self: end;
+    max-inline-size: 80%;
     z-index: -2;
+}
+
+/* Section */
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 80px 35px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-direction: column;
+    margin-block-start: 50px;
+    padding: 40px;
+    inline-size: 100%;
+    block-size: auto;
+    box-shadow: 0px 0px 20px 1px hsla(0, 0%, 0%, 0.226);
+}
+
+.preview {
+    max-inline-size: 80%;
+}
+
+.page-number {
+    margin-block-start: 30px;
+}
+
+.arguments {
+    margin-block-start: 12px;
+}
+
+.preview,
+.arrow-container {
+    margin-block-start: 40px;
+}
+
+.arrow-container > * {
+    cursor: pointer;
+    user-select: none;
+    margin-inline-end: 20px;
+    max-inline-size: 20%;
+}
+
+.dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-block-start: 30px;
+}
+
+.dot {
+    cursor: pointer;
+    background: var(--light-blue);
+    inline-size: 25px;
+    block-size: 25px;
+    border-radius: 50%;
+    margin-inline: 10px;
+    transition: 150ms ease-in;
+}
+
+.dot:hover,
+.active {
+    background: var(--blue);
 }
 
 @media screen and (min-width: 950px) {
@@ -138,8 +202,8 @@ a {
         padding-inline: 80px;
     }
 
-    .title {
-        order: 1; 
+    .text-logo {
+        order: 1;
     }
 
     .image-logo {
@@ -147,13 +211,22 @@ a {
         margin: 0;
     }
 
-    .container {
+    .container,
+    section {
         padding-inline: 40px;
     }
-}
 
-@media screen and (min-width: 1000px) {
     .background-image {
-        max-width: 50%;
+        max-inline-size: 50%;
+    }
+
+    .wrapper {
+        flex-direction: row;
+        inline-size: 80%;
+    }
+
+    .preview {
+        margin: 0;
+        max-inline-size: 40%;
     }
 }
