@@ -32,7 +32,7 @@
     //     "arguments": "Fine della guerra e sospensione del giornalino!",
     //    "path": "/pdf/giornalino.pdf"
     // }
-]
+// ]
 
 // Display datas
 // const start = (n) => {
