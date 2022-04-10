@@ -18,7 +18,15 @@ body {
     overflow-x: hidden;
 }
 
-/* Header */
+/* Landing Page */
+main {
+    background-image: url('/images/background.png');
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 70%;
+    height: 100vh;
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -42,23 +50,17 @@ header {
 
 .logo {
     max-inline-size: 70%;
-    block-size: auto;
-}
-
-/* Main */
-main {
-    display: grid;
-    grid-template-rows: 160px 1fr;
-    margin-block-start: 60px;
+    block-size: auto; 
 }
 
 .container {
-    margin-inline: 35px;
     inline-size: clamp(70%, 2vw, 100%);
+    margin-inline: 35px;
+    margin-block-start: 40px;
 }
 
 .title {
-position: relative;
+    position: relative;
     color: var(--blue);
     font-size: clamp(1.8rem, 5vw, 2.4rem);
 }
@@ -123,12 +125,6 @@ a {
     color: hsl(0, 0%, 0%);
 }
 
-.background-image {
-    justify-self: end;
-    max-inline-size: 80%;
-    z-index: -2;
-}
-
 /* Section */
 section {
     display: flex;
@@ -141,13 +137,20 @@ section {
 .wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: center;
     flex-direction: column;
+    text-align: center;
+    gap: 1rem;
     margin-block-start: 50px;
     padding: 40px;
     inline-size: 100%;
     block-size: auto;
     box-shadow: 0px 0px 20px 1px hsla(0, 0%, 0%, 0.226);
+}
+
+.edition {
+    color: var(--blue);
+    font-size: clamp(1.5rem, 5vw, 2.1rem);
 }
 
 .preview {
@@ -170,7 +173,6 @@ section {
 .arrow-container > * {
     cursor: pointer;
     user-select: none;
-    margin-inline-end: 20px;
     max-inline-size: 20%;
 }
 
@@ -197,6 +199,10 @@ section {
 }
 
 @media screen and (min-width: 950px) {
+    main {
+        background-size: 40%;
+    }
+    
     header {
         flex-direction: row;
         padding-inline: 80px;
@@ -216,12 +222,10 @@ section {
         padding-inline: 40px;
     }
 
-    .background-image {
-        max-inline-size: 50%;
-    }
-
     .wrapper {
         flex-direction: row;
+        align-items: start;
+        text-align: left;
         inline-size: 80%;
     }
 
