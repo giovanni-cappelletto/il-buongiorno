@@ -5,61 +5,112 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giornalino d'Istituto | Don Bosco Padova</title>
-    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js" integrity="sha512-RX/OFugt/bkgwRQg4B22KYE79dQhwaPp2IZaA/YyU3GMo/qY7GrXkiG6Dvvwnds6/DefCfwPTgCXnaC6nAgVYw==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <script src="https://unpkg.com/@rive-app/canvas@1.0.79" defer></script>
     <script src="script.js" defer></script>
 </head>
-<body>
-    <main>
-        <header>
-            <h1 class="text-logo">Il Giornalino dell'Istituto</h1>
-            <a href="https://www.donboscopadova.it/" target="blank" class="image-logo">
-                <img src="/images/logo.png" alt="Logo" class="logo">
-            </a>
-        </header>
+<body data-scrollbar>
+    <header>
+        <a href="https://www.donboscopadova.it/" target="_blank">
+            <img src="./images/logo.png" alt="Logo" class="logo">
+        </a>
 
-        <div class="container">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home" class="home">Home</a></li>
+                <li><a href="#giornalini" class="giornalini">Tutti i giornalini</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="home">
+        <div>
             <h1 class="title">Vuoi scoprire le ultime notizie?</h1>
-            <h3 class="paragraph">Allora scarica ora il giornalino di Aprile dell'Istituto!</h3>
-            <a href="/pdf/Giornalino.pdf" download="Giornalino" class="btn-active">
+            <p class="paragraph">Allora scarica ora il giornalino di Novembre dell'Istituto!</p>
+            <a href="./pdf/2022/Novembre.pdf" download="Giornalino di Novembre" class="btn-active">
                 <button class="btn">Scarica Ora</button>
             </a>
-            <div class="social">
-                <a href="https://www.instagram.com/ilbuongiornodb/" target="blank">
+        
+            <div class="socials">
+                <a href="https://www.instagram.com/ilbuongiornodb/" target="_blank">
                     <i class="fa-brands fa-instagram fa-2x icon"></i>
                 </a>
-                <a href="https://github.com/donboscopadova" target="blank">
+                <a href="https://github.com/donboscopadova" target="_blank">
                     <i class="fa-brands fa-github fa-2x icon"></i>
                 </a>
             </div>
         </div>
-    </main>
-    <!--
-    <section>
-        <h1 class="title">Tutti i giornalini</h1>
-        <div class="wrapper">
-            <div class="text-container">
-                <h2 class="edition">Giornalino di <span id="month">...</span></h2>
-                <h3 class="paragraph">Scarica il giornalino di <span id="day">...</span>!</h3>
-                <h3 class="paragraph page-number">Numero di pagine: <span id="number">...</span></h3>
-                <h3 class="paragraph arguments">Argomenti: <span id="args">...</span></h3>
-                <a href="/pdf/Giornalino.pdf" download="Giornalino" class="btn-active periodical">
-                    <button class="btn">Scarica Ora</button>
-                </a>
-                <div class="arrow-container">
-                    <img src="/images/left-arrow.png" alt="Left Arrow" id="left-arrow">
-                    <img src="/images/right-arrow.png" alt="Right Arrow" id="right-arrow">
-                </div>
-            </div>
-            <img src="/images/preview.png" alt="Copertina del giornalino" class="preview">
 
+        <!-- <canvas id="canvas" width="500" height="500"></canvas> -->
+
+        <img src="./images/main-image.svg" alt="Main Image" class="main-img">
+    </main>
+
+    <section id="giornalini">
+        <h1 class="title">Tutti i giornalini</h1>
+        <p class="paragraph">Clicca la copertina del giornalino che desideri scaricare!</p>
+
+        <div class="cards">
+            <div class="card" data-tilt data-tilt-scale="1.1">
+                <a href="./pdf/2022/Aprile.pdf" download="Giornalino di Aprile">
+                    <img src="./images/preview/2022/Aprile.png" alt="Copertina del giornalino di Aprile" class="preview">
+                
+                    <div class="card-content">
+                        <p class="info"><span class="bold">Titolo:</span> Si vis pacem, para pacem</p>
+                        <p class="info"><span class="bold">Edizione:</span> 1</p>
+                        <p class="info"><span class="bold">Numero di pagine:</span> 40</p>
+                    </div>                    
+                </a>
+            </div>
+
+            <div class="card" data-tilt data-tilt-scale="1.1">
+                <a href="./pdf/2022/Novembre.pdf" download="Giornalino di Novembre">
+                    <img src="./images/preview/2022/Novembre.png" alt="Copertina del giornalino di Novembre" class="preview">
+
+                    <div class="card-content">
+                        <p class="info"><span class="bold">Titolo:</span> Il latte dei sogni</p>
+                        <p class="info"><span class="bold">Edizione:</span> 2</p>
+                        <p class="info"><span class="bold">Numero di pagine:</span> 40</p>
+                    </div>   
+                </a>
+            </div>
         </div>
-        <div class="dots">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+    </section>
+
+    <footer>
+        <a href="https://www.donboscopadova.it/" target="_blank">
+            <img src="./images/logo.png" alt="Logo" class="logo footer-logo">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#giornalini">Tutti i giornalini</a></li>
+        </ul>
+
+        <div class="socials">
+            <a href="https://www.instagram.com/ilbuongiornodb/" target="_blank">
+                <i class="fa-brands fa-instagram fa-2x icon"></i>
+            </a>
+            <a href="https://github.com/donboscopadova" target="_blank">
+                <i class="fa-brands fa-github fa-2x icon"></i>
+            </a>
         </div>
-    </section> -->
+    </footer>
+
+    <!-- Popup Message -->
+    <dialog class="closed">
+        <img src="./images/alert-image.png" alt="Alert Image" title="Contest di Poesie" class="alert-image">
+
+        <div class="content">
+            <h1><span id="emoji">👋</span> Hey!</h1>
+            <p>Il nuovo contest di scrittura <span class="italic">Horror</span> è iniziato.</p>
+            <p>Cosa aspetti??? <span class="bold">Inizia a scrivere!</span></p>
+        </div>
+    
+        <div class="close-icon"></div>
+    </dialog>
 </body>
 </html>
