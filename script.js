@@ -1,70 +1,48 @@
-// Variables 
-// const month = document.querySelector('#month')
-// const day = document.querySelector('#day')
-// const pageNumber = document.querySelector('#number')
-// const args = document.querySelector('#args')
-// const periodical = document.querySelector('.periodical')
-// const leftArrow = document.querySelector('#left-arrow')
-// const rightArrow = document.querySelector('#right-arrow')
-// const dots = document.querySelectorAll('.dot')
-// let counter = 0, mese
+// Interactive Move Between Sections
+const header = document.querySelector('header')
+const main = document.querySelector('main')
+const section = document.querySelector('section')
+const links = document.querySelectorAll('header .nav-links li a')
 
-// Database
-// const database = [
-    // {
-    //     "month": "Marzo",
-    //     "day": "10 Marzo 2022", 
-    //     "pages": "20", 
-    //     "arguments": "guerra in Ucraina, interviste, Olimpiadi e molto altro!",
-    //    "path": "/pdf/giornalino.pdf"
-    // },
-    // {
-    //     "month": "Aprile",
-    //     "day": "10 Aprile 2022", 
-    //     "pages": "15", 
-    //     "arguments": "Pace nel mondo e altro...!",
-    //     "path": "/pdf/giornalino.pdf"
-    // },
-    // {
-    //     "month": "Giugno",
-    //     "day": "10 Giugno 2022", 
-    //     "pages": "12", 
-    //     "arguments": "Fine della guerra e sospensione del giornalino!",
-    //    "path": "/pdf/giornalino.pdf"
-    // }
-// ]
+const sections = [main, section]
 
-// Display datas
-// const start = (n) => {
-//     month.textContent = database[n].month
-//     day.textContent = database[n].day
-//     pageNumber.textContent = database[n].pages
-//     args.textContent = database[n].arguments
-//     periodical.setAttribute('href', database[n].path) 
-// 
-//     for (let i = 0; i < dots.length; i++) {
-//         dots[i].classList.remove('active')
-//     }
-// 
-//     dots[n].classList.add('active')
-// }
+const removeLastClass = element => {
+    const classList = element.classList
+    classList.remove(classList[0])
+}
 
-// window.addEventListener('load', start(counter))
+const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+        if (entry.isIntersecting) {
+            header.classList.add(entry.target.id)
 
-// leftArrow.addEventListener('click', () => {
-//     counter === 0 ? counter = database.length - 1 : counter--
-// 
-//     start(counter)
-// })
+            if (header.classList.length > 1) removeLastClass(header)
+        }
+    }
 
-// rightArrow.addEventListener('click', () => {
-//     counter === database.length - 1 ? counter = 0 : counter++
-//     
-//     start(counter)
-// })
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            if (header.classList[0] !== link.classList[0]) {
+                removeLastClass(header)
+                header.classList.add(link.classList[0])
+            }
+        })
+    })
+}, { threshold: 0.01})
 
-// dots.forEach((dot, numb) => {
-//    dot.addEventListener('click', () => {
-//        start(numb)
-//    })
+sections.forEach(section => observer.observe(section))
+
+// Popup
+const dialog = document.querySelector('dialog') 
+const closeIcon = document.querySelector('.close-icon') 
+
+closeIcon.addEventListener('click', () => {
+    dialog.classList.add('closed')
+})
+
+// Animation 
+// new rive.Rive({
+//     src: './images/main-image.riv',
+//     canvas: document.querySelector('#canvas'),
+//     autoplay: true
 // })
