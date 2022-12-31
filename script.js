@@ -32,17 +32,18 @@ const observer = new IntersectionObserver(entries => {
 
 sections.forEach(section => observer.observe(section))
 
-// Popup
-const dialog = document.querySelector('dialog') 
-const closeIcon = document.querySelector('.close-icon') 
+// Animation 
+const canvas = document.querySelector('#canvas')
 
-closeIcon.addEventListener('click', () => {
-    dialog.classList.add('closed')
+const animation = new rive.Rive({
+    src: './images/animation.riv',
+    canvas, 
+    autoplay: false,
+    animations: ['Initialize', 'Loop Animation'],
+    fit: rive.Fit.cover,
 })
 
-// Animation 
-// new rive.Rive({
-//     src: './images/main-image.riv',
-//     canvas: document.querySelector('#canvas'),
-//     autoplay: true
-// })
+const animationObserver = new IntersectionObserver(entry => {
+    if (entry[0].isIntersecting) animation.play()
+})
+animationObserver.observe(canvas)
