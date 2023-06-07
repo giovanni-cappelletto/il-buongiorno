@@ -8,9 +8,10 @@
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js" integrity="sha512-RX/OFugt/bkgwRQg4B22KYE79dQhwaPp2IZaA/YyU3GMo/qY7GrXkiG6Dvvwnds6/DefCfwPTgCXnaC6nAgVYw==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
     <script src="https://unpkg.com/@rive-app/canvas@1.0.79" defer></script>
     <script src="script.js" defer></script>
+    <script src="periodical.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js" integrity="sha512-RX/OFugt/bkgwRQg4B22KYE79dQhwaPp2IZaA/YyU3GMo/qY7GrXkiG6Dvvwnds6/DefCfwPTgCXnaC6nAgVYw==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 </head>
 <body>
     <header>
@@ -29,7 +30,7 @@
     <main id="home">
         <div>
             <h1 class="title">Vuoi scoprire le ultime notizie?</h1>
-            <p class="paragraph">Allora scarica ora il giornalino di Giugno dell'Istituto!</p>
+            <p class="paragraph">Allora scarica ora il giornalino di <span id="mese"></span> dell'Istituto!</p>
             <a href="./pdf/2023/Giugno.pdf" download="Giornalino di Giugno" class="btn-active">
                 <button class="btn">Scarica Ora</button>
             </a>
@@ -51,55 +52,7 @@
         <h1 class="title">Tutti i giornalini</h1>
         <p class="paragraph">Clicca la copertina del giornalino che desideri scaricare!</p>
 
-        <div class="cards">
-            <div class="card" data-tilt data-tilt-scale="1.1">
-                <a href="./pdf/2022/Aprile.pdf" download="Giornalino di Aprile">
-                    <img src="./images/preview/2022/Aprile.png" alt="Copertina del giornalino di Aprile" class="preview">
-                
-                    <div class="card-content">
-                        <p class="info"><span class="bold">Titolo:</span> Si vis pacem, para pacem</p>
-                        <p class="info"><span class="bold">Edizione:</span> 1</p>
-                        <p class="info"><span class="bold">Numero di pagine:</span> 40</p>
-                    </div>                    
-                </a>
-            </div>
-
-            <div class="card" data-tilt data-tilt-scale="1.1">
-                <a href="./pdf/2022/Novembre.pdf" download="Giornalino di Novembre">
-                    <img src="./images/preview/2022/Novembre.png" alt="Copertina del giornalino di Novembre" class="preview">
-
-                    <div class="card-content">
-                        <p class="info"><span class="bold">Titolo:</span> Il latte dei sogni</p>
-                        <p class="info"><span class="bold">Edizione:</span> 2</p>
-                        <p class="info"><span class="bold">Numero di pagine:</span> 40</p>
-                    </div>   
-                </a>
-            </div>
-            
-            <div class="card" data-tilt data-tilt-scale="1.1">
-                <a href="./pdf/2023/Marzo.pdf" download="Giornalino di Marzo">
-                    <img src="./images/preview/2023/Marzo.png" alt="Copertina del giornalino di Marzo" class="preview">
-                
-                    <div class="card-content">
-                        <p class="info"><span class="bold">Titolo:</span> Racconti dalle ombre</p>
-                        <p class="info"><span class="bold">Edizione:</span> 3</p>
-                        <p class="info"><span class="bold">Numero di pagine:</span> 32</p>
-                    </div>                    
-                </a>
-            </div>
-            
-            <div class="card" data-tilt data-tilt-scale="1.1">
-                <a href="./pdf/2023/Giugno.pdf" download="Giornalino di Giugno">
-                    <img src="./images/preview/2023/Giugno.png" alt="Copertina del giornalino di Giugno" class="preview">
-                
-                    <div class="card-content">
-                        <p class="info"><span class="bold">Titolo:</span> Blast from the past</p>
-                        <p class="info"><span class="bold">Edizione:</span> 4</p>
-                        <p class="info"><span class="bold">Numero di pagine:</span> 32</p>
-                    </div>                    
-                </a>
-            </div>
-        </div>
+        <div class="cards"></div>
     </section>
 
     <footer>
