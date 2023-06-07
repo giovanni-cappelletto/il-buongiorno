@@ -74,7 +74,6 @@ class CreatePeriodical {
         }
 
         a.append(img, cardContent)
-
         card.appendChild(a)
 
         return card
