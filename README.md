@@ -15,7 +15,8 @@ Per avere immagini di grandezza e aspect-ratio uguali:
 
     ![Crea un nuovo progetto][create]
     - Clicca F e subito dopo clicca nuovamente nella parte centrale della pagina (dovresti vedere che si è creato un quadrato/rettangolo)
-    - A questo punto vai sul lato destro ed inserisci i seguenti valori: **W**: 734 - **H**: 1039. Infine clicca su *Export Frame 1*
+    - A questo punto vai sul lato destro ed inserisci i seguenti valori: **W**: 734 - **H**: 1039 
+    - Inserisci all'interno di questo rettangolo l'immagine in modo che lo occupi completamente. Infine clicca su *Export Frame 1*
 
     ![Crea un nuovo progetto][sidebar]
 
