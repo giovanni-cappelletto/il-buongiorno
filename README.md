@@ -22,7 +22,6 @@ Per avere immagini di grandezza e aspect-ratio uguali:
 
 3. Entra nella repository [*il-buongiorno*](https://github.com/donboscopadova/il-buongiorno)
 4. Entra nella cartella *pdf* e successivamente in quella dell'anno corrispondente all'edizione che stai per caricare e clicca *Add file* in alto a destra. \
-![Crea un nuovo progetto][addFile]
 5. Clicca *Upload files*
 ![Crea un nuovo progetto][uploadFiles]
 6. A questo punto trascina il file nel riquadro apposito, aspetta che finisca l'upload e clicca *Commit changes*
