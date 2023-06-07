@@ -85,11 +85,11 @@ Voilà! Non ti resta, quindi, che andare sul [sito](https://il-buongiorno.vercel
 *PS:* Può essere che in futuro aggionerò il sito in modo da tale da evitare di farti mettere mano al codice. Finché non lo farò, questo è il modo più semplice per aggiungere nuove edizioni.
 
 <!-- Immagini -->
-[create]: ./create.png
-[sidebar]: ./sidebar.png
-[addFile]: ./addFile.png
-[uploadFiles]: ./uploadFiles.png
-[dragFiles]: ./dragFiles.png
-[modifyPeriodical]: ./modifyPeriodical.png
-[commitChanges]: ./commitChanges.png
-[uploadChanges]: ./uploadChanges.png
+[create]: ./markdown/create.png
+[sidebar]: ./markdown/sidebar.png
+[addFile]: ./markdown/addFile.png
+[uploadFiles]: ./markdown/uploadFiles.png
+[dragFiles]: ./markdown/dragFiles.png
+[modifyPeriodical]: ./markdown/modifyPeriodical.png
+[commitChanges]: ./markdown/commitChanges.png
+[uploadChanges]: ./markdown/uploadChanges.png
