@@ -29,7 +29,7 @@ class CreatePeriodical {
     }
 
     createImgPath() {
-        return `./assets/images/preview/${this.params.year}/${this.params.month}.png`
+        return `./images/preview/${this.params.year}/${this.params.month}.png`
     }
 
     createDescription() {
@@ -74,6 +74,7 @@ class CreatePeriodical {
         }
 
         a.append(img, cardContent)
+        
         card.appendChild(a)
 
         return card
