@@ -11,7 +11,7 @@ hamburger.addEventListener("click", () => {
 const canvas = document.querySelector(".animation");
 
 const animation = new rive.Rive({
-  src: "./public/assets/animation.riv",
+  src: "./assets/animation.riv",
   canvas,
   autoplay: false,
   animations: ["Initialize", "Loop Animation"],
@@ -67,8 +67,8 @@ const periodicals = [
 
 const getInfos = ({ fileName, year }) => {
   const altMessage = `Giornalino di ${fileName}`;
-  const thumbnailSrc = `./public/thumbnails/${year}/${fileName}.png`;
-  const pdfSrc = `./public/pdf/${year}/${fileName}.pdf`;
+  const thumbnailSrc = `./thumbnails/${year}/${fileName}.png`;
+  const pdfSrc = `./pdf/${year}/${fileName}.pdf`;
 
   return { altMessage, thumbnailSrc, pdfSrc };
 };
@@ -177,7 +177,7 @@ infoBtns.forEach((infoBtn) => {
 
     // Finding the periodical through the fileName
     const baseURL = "http://127.0.0.1:5500/";
-    const baseFolder = "public/thumbnails/YYYY/";
+    const baseFolder = "thumbnails/YYYY/";
     const imageSrc = anchor.children[0].src;
     const month = imageSrc.slice(baseURL.length + baseFolder.length, -4);
 
