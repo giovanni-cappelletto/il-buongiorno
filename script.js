@@ -176,7 +176,7 @@ infoBtns.forEach((infoBtn) => {
     anchor.removeAttribute("href");
 
     // Finding the periodical through the fileName
-    const baseURL = "http://127.0.0.1:5500/";
+    const baseURL = "https://il-buongiorno-three.vercel.app/";
     const baseFolder = "thumbnails/YYYY/";
     const imageSrc = anchor.children[0].src;
     const month = imageSrc.slice(baseURL.length + baseFolder.length, -4);
