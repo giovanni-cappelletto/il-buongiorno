@@ -1,37 +1,17 @@
-import { useState, useEffect, ReactNode } from "react";
+import { useState, useEffect } from "react";
+import { Data, DialogInfo } from "../App";
 import Paragraph from "./Paragraph";
+import Carousel from "./Carousel";
 import supabase from "../utils/supabase";
-import getAssets from "../utils/getAssets";
-import leftArrowIcon from "../assets/leftArrowIcon.svg";
-import rightArrowIcon from "../assets/rightArrowIcon.svg";
 
-interface Data {
-  readonly id: number;
-  title: string;
-  month: string;
-  edition: number;
-  year: number;
-  pages: number;
-}
-
-type DialogInfo = {
-  isOpen: boolean;
-  periodical: Data;
-};
-
-const Browse = () => {
+const Browse = ({
+  dialogInfo,
+  setDialogInfo,
+}: {
+  dialogInfo: DialogInfo;
+  setDialogInfo: (dialogInfo: DialogInfo) => void;
+}) => {
   const [periodicals, setPeriodicals] = useState<Data[]>([]);
-  const [dialogInfo, setDialogInfo] = useState<DialogInfo>({
-    isOpen: false,
-    periodical: {
-      id: 0,
-      title: "",
-      month: "",
-      edition: 0,
-      year: 0,
-      pages: 0,
-    },
-  });
 
   useEffect(() => {
     (async () => {
@@ -54,43 +34,7 @@ const Browse = () => {
         leggere, clicca la copertina ed inizia a scorrere il pdf!
       </Paragraph>
 
-      <div className="slider">
-        <img src={leftArrowIcon} alt="Freccia" className="slider__icon" />
-
-        <div className="cover__container">
-          {periodicals.map((periodical: Data, index: number): ReactNode => {
-            return (
-              <div key={index}>
-                <a
-                  href={getAssets("pdf", periodical.year, periodical.month)}
-                  download={`Giornalino di ${periodical.month}`}
-                  target="_blank"
-                >
-                  <img
-                    src={getAssets(
-                      "thumbnails",
-                      periodical.year,
-                      periodical.month
-                    )}
-                    alt="Copertina"
-                    className="cover"
-                  />
-                </a>
-                <span
-                  className="material-symbols-outlined info_icon side_image__info_icon"
-                  onClick={() => {
-                    setDialogInfo({ isOpen: true, periodical });
-                  }}
-                >
-                  info
-                </span>
-              </div>
-            );
-          })}
-        </div>
-
-        <img src={rightArrowIcon} alt="Freccia" className="slider__icon" />
-      </div>
+      <Carousel periodicals={periodicals} setDialogInfo={setDialogInfo} />
 
       <Dialog dialogInfo={dialogInfo} setDialogInfo={setDialogInfo} />
     </section>
