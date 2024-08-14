@@ -1,6 +1,7 @@
 import Paragraph from "./Paragraph";
 import arrowIcon from "../assets/arrowIcon.svg";
 import { useRive, Layout, Fit } from "@rive-app/react-canvas";
+import homeStyles from "../styles/home.module.css";
 
 const Section = () => {
   const { RiveComponent: ReadingRiveComponent } = useRive({
@@ -14,16 +15,16 @@ const Section = () => {
   });
 
   return (
-    <section className="spam_instagram_section">
-      <ReadingRiveComponent className="animation" />
+    <section className={`${homeStyles.spam_instagram_section}`}>
+      <ReadingRiveComponent className={homeStyles.animation} />
 
-      <div className="desc__container">
-        <Paragraph className="section__desc">
+      <div className={homeStyles.desc__container}>
+        <Paragraph className={homeStyles.section__desc}>
           Non hai letto le edizioni precedenti?? Non c'è nessun problema: scendi
           e scarica tutto quello che ti serve!
         </Paragraph>
 
-        <Paragraph className="section__desc">
+        <Paragraph className={homeStyles.section__desc}>
           Aspetta però un attimo!! Prima di scendere, seguici su{" "}
           <a href="https://www.instagram.com/ilbuongiornodb/" target="_blank">
             Instagram
@@ -39,7 +40,11 @@ const Section = () => {
         </Paragraph>
 
         <a href="#giornalini">
-          <img src={arrowIcon} alt="Freccia" className="arrow_icon" />
+          <img
+            src={arrowIcon}
+            alt="Freccia"
+            className={homeStyles.arrow_icon}
+          />
         </a>
       </div>
     </section>
@@ -47,11 +52,3 @@ const Section = () => {
 };
 
 export default Section;
-
-/*
-    TODO:
-    - Sistemare active navbar
-    - Rendere responsive .riv
-    - Sistemare animation di arrow
-    - Trovare una bella immagine per Main.tsx
-*/

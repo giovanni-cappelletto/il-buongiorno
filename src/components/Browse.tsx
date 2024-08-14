@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { Data, DialogInfo } from "../App";
+import { Data, DialogInfo } from "../utils/types";
 import Paragraph from "./Paragraph";
 import Carousel from "./Carousel";
+import Property from "../components/Property";
 import supabase from "../utils/supabase";
+import homeStyles from "../styles/home.module.css";
 
 const Browse = ({
   dialogInfo,
@@ -26,7 +28,7 @@ const Browse = ({
   }, []);
 
   return (
-    <section id="giornalini" className="giornalini_section">
+    <section id="giornalini" className={homeStyles.giornalini_section}>
       <h1 className="title">Giornalini</h1>
 
       <Paragraph>
@@ -53,9 +55,9 @@ const Dialog = ({
   return (
     <dialog open={dialogInfo.isOpen}>
       <div>
-        <h1 className="dialog__title">{title}</h1>
+        <h1 className={homeStyles.dialog__title}>{title}</h1>
         <div
-          className="close_icon"
+          className={homeStyles.close_icon}
           onClick={() => {
             setDialogInfo({ ...dialogInfo, isOpen: false });
           }}
@@ -66,20 +68,6 @@ const Dialog = ({
       <Property text="Numero di pagine" value={pages} />
       <Property text="Anno" value={year} />
     </dialog>
-  );
-};
-
-const Property = ({
-  text,
-  value,
-}: {
-  text: string;
-  value: string | number;
-}) => {
-  return (
-    <p className="dialog__property">
-      {text}: <span className="value">{value}</span>
-    </p>
   );
 };
 

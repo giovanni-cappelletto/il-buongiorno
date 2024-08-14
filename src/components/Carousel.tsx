@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import Slider from "react-slick";
-import { Data, DialogInfo } from "../App";
+import { Data, DialogInfo } from "../utils/types";
 import getAssets from "../utils/getAssets";
 import leftArrowIcon from "../assets/leftArrowIcon.svg";
 import rightArrowIcon from "../assets/rightArrowIcon.svg";

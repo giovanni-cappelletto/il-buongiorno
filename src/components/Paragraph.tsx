@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import homeStyles from "../styles/home.module.css";
 
 const Paragraph = ({
   className,
@@ -7,7 +8,7 @@ const Paragraph = ({
   className?: string;
   children: ReactNode;
 }) => {
-  return <p className={`desc ${className}`}>{children}</p>;
+  return <p className={`${homeStyles.desc} ${className}`}>{children}</p>;
 };
 
 export default Paragraph;

@@ -1,4 +1,5 @@
 import logo from "../assets/logo.png";
+import homeStyles from "../styles/home.module.css";
 
 type Toggle = {
   toggleNavBar: boolean;
@@ -8,18 +9,18 @@ type Toggle = {
 const Header = ({ toggleNavBar, setToggleNavBar }: Toggle) => {
   return (
     <header>
-      <div className="header__wrapper">
+      <div className={homeStyles.header__wrapper}>
         <a href="https://www.donboscopadova.it/" target="_blank" tabIndex={-1}>
-          <img src={logo} alt="Logo" className="logo" />
+          <img src={logo} alt="Logo" className={homeStyles.logo} />
         </a>
 
-        <nav className={`${toggleNavBar && "active"}`}>
-          <ul className="nav__links">
+        <nav className={`${toggleNavBar && homeStyles.active}`}>
+          <ul className={homeStyles.nav__links}>
             <ListItem text="Home" />
             <ListItem text="Giornalini" />
             <ListItem text="Aiutaci" />
-            <li className="button">
-              <a href="/" target="_blank" className="btn">
+            <li className={homeStyles.button}>
+              <a href="/admin" target="_blank" className={homeStyles.btn}>
                 Admin
               </a>
             </li>
@@ -27,7 +28,7 @@ const Header = ({ toggleNavBar, setToggleNavBar }: Toggle) => {
         </nav>
 
         <div
-          className="hamburger"
+          className={homeStyles.hamburger}
           onClick={() => setToggleNavBar(!toggleNavBar)}
         ></div>
       </div>
@@ -37,7 +38,7 @@ const Header = ({ toggleNavBar, setToggleNavBar }: Toggle) => {
 
 const ListItem = ({ text }: { text: string }) => {
   return (
-    <li className="link">
+    <li className={homeStyles.link}>
       <a href={`#${text.toLowerCase()}`}>{text}</a>
     </li>
   );
