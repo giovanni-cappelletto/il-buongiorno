@@ -8,7 +8,7 @@ const Button = ({
 }: {
   children: ReactNode;
   theme: string;
-  disabled: boolean;
+  disabled?: boolean;
 }) => {
   return (
     <button className={`${theme} ${adminStyles.button}`} disabled={disabled}>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import Paragraph from "../components/Paragraph";
+import Form from "../components/Form";
 import Card from "../components/Card";
 import { Data } from "../utils/types";
 import adminStyles from "../styles/admin.module.css";
@@ -16,7 +17,7 @@ const Add = () => {
   });
 
   return (
-    <main className={adminStyles.main}>
+    <main className={`${adminStyles.main} ${adminStyles.new_edition_section}`}>
       <div className={adminStyles.main__title}>
         <Breadcrumb />
         <h1 className="title">Nuova edizione</h1>
@@ -34,7 +35,7 @@ const Add = () => {
           dimensione ...x...
         </Paragraph>
 
-        <form></form>
+        <Form periodical={periodical} setPeriodical={setPeriodical} />
       </div>
 
       <div>
