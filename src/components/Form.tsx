@@ -10,6 +10,12 @@ const Form = ({
   periodical: Data;
   setPeriodical: (periodical: Data) => void;
 }) => {
+  // ===== To be removed =====
+  const testHandleClick = () => {
+    setPeriodical({ ...periodical, title: "test" });
+  };
+  // ===== To be removed =====
+
   return (
     <form>
       <div className={adminStyles.form__container}>
@@ -25,6 +31,10 @@ const Form = ({
           <Button theme={adminStyles.dark_theme}>PDF</Button>
         </div>
       </div>
+
+      {/* ===== To be removed ===== */}
+      <button onClick={testHandleClick}>Test</button>
+      {/* ===== To be removed ===== */}
 
       <Dropper />
 
