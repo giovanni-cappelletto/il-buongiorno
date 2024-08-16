@@ -4,26 +4,18 @@ import { Data } from "../utils/types";
 import getAssets from "../utils/getAssets";
 import adminStyles from "../styles/admin.module.css";
 
-const Card = ({
-  periodical,
-  disabled = false,
-}: {
-  periodical: Data;
-  disabled?: boolean;
-}) => {
+const Card = ({ periodical }: { periodical: Data }) => {
   return (
     <div className={adminStyles.card}>
       <div className={adminStyles.card__content}>
         <h2 className={adminStyles.card__title}>{periodical.title}</h2>
 
         <Property text={"Edizione"} value={periodical.edition} />
+        <Property text={"Pagine"} value={periodical.pages} />
         <Property text={"Mese"} value={periodical.month} />
         <Property text={"Anno"} value={periodical.year} />
-        <Property text={"Pagine"} value={periodical.pages} />
 
-        <Button theme={adminStyles.dark_theme} disabled={disabled}>
-          Modifica
-        </Button>
+        <Button theme={adminStyles.dark_theme}>Modifica</Button>
       </div>
 
       <a

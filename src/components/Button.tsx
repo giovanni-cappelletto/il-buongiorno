@@ -4,14 +4,14 @@ import adminStyles from "../styles/admin.module.css";
 const Button = ({
   children,
   theme,
-  disabled,
+  onClick,
 }: {
   children: ReactNode;
   theme: string;
-  disabled?: boolean;
+  onClick?: () => void;
 }) => {
   return (
-    <button className={`${theme} ${adminStyles.button}`} disabled={disabled}>
+    <button className={`${theme} ${adminStyles.button}`} onClick={onClick}>
       {children}
     </button>
   );

@@ -1,10 +1,11 @@
 export interface Data {
-  readonly id: number;
   title: string;
   month: string;
   edition: number;
   year: number;
   pages: number;
+  thumbnail?: File;
+  pdf?: File;
 }
 
 export type DialogInfo = {

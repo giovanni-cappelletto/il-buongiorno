@@ -12,7 +12,6 @@ export type Database = {
       periodical: {
         Row: {
           edition: number;
-          id: number;
           month: string;
           pages: number;
           title: string;
@@ -20,7 +19,6 @@ export type Database = {
         };
         Insert: {
           edition: number;
-          id?: number;
           month: string;
           pages: number;
           title: string;
@@ -28,7 +26,6 @@ export type Database = {
         };
         Update: {
           edition?: number;
-          id?: number;
           month?: string;
           pages?: number;
           title?: string;

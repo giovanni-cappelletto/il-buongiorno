@@ -28,7 +28,7 @@ const findPath = () => {
 
   const formattedCurrentLocation: string[] = currentLocation
     .split("/")
-    .map((value) => value.replace("%20", " "));
+    .map((value) => value.replace("%20", " ").replace("?", ""));
 
   return formattedCurrentLocation;
 };
