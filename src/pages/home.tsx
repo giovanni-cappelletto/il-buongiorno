@@ -13,7 +13,6 @@ const Home = () => {
   const [dialogInfo, setDialogInfo] = useState<DialogInfo>({
     isOpen: false,
     periodical: {
-      id: 0,
       title: "",
       month: "",
       edition: 0,
