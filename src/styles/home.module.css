@@ -365,6 +365,10 @@ dialog div {
 
   nav {
     position: fixed;
+    display: grid;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
     inset: 0 30vw 0 0;
     background-color: var(--primary-clr);
     border-right: 2px solid var(--secondary-clr);
@@ -378,11 +382,11 @@ dialog div {
 
   .nav__links {
     flex-direction: column;
-    padding: 100px var(--padding-inline);
+    padding: 40px var(--padding-inline);
   }
 
   /* Main */
-  main {
+  .main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
