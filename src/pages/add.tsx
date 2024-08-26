@@ -3,6 +3,8 @@ import Breadcrumb from "../components/Breadcrumb";
 import Paragraph from "../components/Paragraph";
 import Form from "../components/Form";
 import { Data } from "../utils/types";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import adminStyles from "../styles/admin.module.css";
 
 const Add = () => {
@@ -13,6 +15,20 @@ const Add = () => {
     year: 2022,
     pages: 40,
   });
+
+  const notify = (prop: string) => {
+    const options = {
+      theme: 'dark',
+      autoClose: 2000
+    }
+
+    if (prop === 'err') {
+      toast.error('Qualcosa è andato storto!', options)
+    }
+
+    const msg = prop === 'thumbnail' ? 'La copertina è pronta per essere salvata!' : 'Il PDF è pronto per essere salvato!'
+    toast.success(msg, options)
+  }
 
   return (
     <main className={`${adminStyles.main} ${adminStyles.new_edition_section}`}>
@@ -33,8 +49,9 @@ const Add = () => {
           dimensione ...x...
         </Paragraph>
 
-        <Form periodical={periodical} setPeriodical={setPeriodical} />
+        <Form periodical={periodical} setPeriodical={setPeriodical} notify={notify} />
       </div>
+      <ToastContainer className={adminStyles.toast__container} />
     </main>
   );
 };

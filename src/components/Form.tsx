@@ -1,102 +1,36 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { Data } from "../utils/types";
 import Button from "./Button";
-import Paragraph from "./Paragraph";
 import {
   insertPeriodicalInfos,
   insertPeriodicalFiles,
 } from "../utils/supabase";
+import findMonth from "../utils/findMonth";
 import adminStyles from "../styles/admin.module.css";
 
 const Form = ({
   periodical,
   setPeriodical,
+  notify
 }: {
   periodical: Data;
   setPeriodical: (periodical: Data) => void;
+  notify: (prop: string) => void
 }) => {
-  const [base64Thumbnail, setBase64Thumbnail] = useState<string>();
   const thumbnailRef = useRef<HTMLInputElement>(null);
   const pdfRef = useRef<HTMLInputElement>(null);
-
-  const base64FileURL = (element: File): void => {
-    const file = element;
-
-    const reader = new window.FileReader();
-
-    reader.onloadend = function (e) {
-      if (!e.target) {
-        return;
-      }
-
-      if (typeof e.target.result === "string") {
-        setBase64Thumbnail(e.target.result);
-      }
-    };
-
-    reader.readAsDataURL(file);
-  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     prop: string
   ) => {
     if (!e.target.files) {
+      notify('err')
       return;
     }
 
-    if (prop === "thumbnail") {
-      base64FileURL(e.target.files[0]);
-    }
-
     setPeriodical({ ...periodical, [prop]: e.target.files[0] });
-  };
-
-  const findMonth = (monthNumber: number): string => {
-    let month: string;
-
-    switch (monthNumber) {
-      case 1:
-        month = "Gennaio";
-        break;
-      case 2:
-        month = "Febbraio";
-        break;
-      case 3:
-        month = "Marzo";
-        break;
-      case 4:
-        month = "Aprile";
-        break;
-      case 5:
-        month = "Maggio";
-        break;
-      case 6:
-        month = "Giugno";
-        break;
-      case 7:
-        month = "Luglio";
-        break;
-      case 8:
-        month = "Agosto";
-        break;
-      case 9:
-        month = "Settembre";
-        break;
-      case 10:
-        month = "Ottobre";
-        break;
-      case 11:
-        month = "Novembre";
-        break;
-      case 12:
-        month = "Dicembre";
-        break;
-      default:
-        month = "Novembre";
-    }
-
-    return month;
+    notify(prop)
   };
 
   const handleChangeNumber = (
@@ -224,8 +158,6 @@ const Form = ({
         </div>
       </div>
 
-      <Dropper base64Thumbnail={base64Thumbnail} />
-
       <Button
         theme={`${adminStyles.accent_theme} ${adminStyles.save_btn}`}
         onClick={() => {
@@ -265,22 +197,6 @@ const Input = ({
     <div className={`${adminStyles.input} ${className}`}>
       <span>{text}:</span>
       <input type="text" placeholder={placeholder} onChange={onChange} />
-    </div>
-  );
-};
-
-const Dropper = ({
-  base64Thumbnail,
-}: {
-  base64Thumbnail: string | undefined;
-}) => {
-  return (
-    <div
-      className={adminStyles.dropper}
-      data-active={base64Thumbnail ? "true" : "false"}
-    >
-      {base64Thumbnail && <img src={base64Thumbnail} alt="Copertina" />}
-      {!base64Thumbnail && <Paragraph>Copertina</Paragraph>}
     </div>
   );
 };

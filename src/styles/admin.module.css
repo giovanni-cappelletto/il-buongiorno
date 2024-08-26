@@ -6,6 +6,14 @@
   padding: var(--padding-inline);
 }
 
+.new_edition_section {
+  margin-block-end: 30px;
+}
+
+.toast__container {
+  font-family: 'Poppins', sans-serif;
+}
+
 /* Title and Desc */
 .main__title,
 .main__title a {
@@ -135,18 +143,9 @@ a:has(.card__image) {
 
 .add_btn {
   position: fixed;
+  z-index: 20;
   right: 145px;
   bottom: 100px;
-}
-
-.new_edition_section {
-  display: grid;
-  grid-template-columns: auto auto;
-  column-gap: 5rem;
-}
-
-.new_edition_section .main__title {
-  grid-column: 1 / 3;
 }
 
 /* Chapter */
@@ -170,17 +169,22 @@ form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  max-width: 650px;
+  width: 90vw;
+  position: relative;
 }
 
 .input__container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 1rem;
+  width: 100%;
 }
 
 .title_input {
-  width: 650px !important;
+  flex: 1;
 }
 
 .input {
@@ -188,7 +192,6 @@ form {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  width: 300px;
   color: var(--secondary-clr);
   border: 4px solid var(--secondary-clr);
   border-radius: 6px;
@@ -221,36 +224,8 @@ form {
 .save_btn {
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -80px;
   width: min-content;
-}
-
-/* Dropper */
-.dropper {
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  min-width: 280px;
-  height: 400px;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%2338376d' stroke-width='11' stroke-dasharray='22' stroke-dashoffset='100' stroke-linecap='butt'/%3e%3c/svg%3e");
-  border-radius: 10px;
-  position: relative;
-}
-
-.dropper[data-active="true"] {
-  border: 4px solid var(--secondary-clr);
-  background-image: none;
-}
-
-.dropper img {
-  width: 100%;
-  height: 100%;
-}
-
-@media screen and (max-width: 1500px) {
-  .new_edition_section {
-    grid-template-columns: auto;
-  }
 }
 
 @media screen and (max-width: 850px) {
