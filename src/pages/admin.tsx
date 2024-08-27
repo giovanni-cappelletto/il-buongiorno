@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import Search from "../components/Search";
 import Paragraph from "../components/Paragraph";
 import Card from "../components/Card";
 import Breadcrumb from "../components/Breadcrumb";
 import Button from "../components/Button";
+import Input from "../components/Input";
 import { Data } from "../utils/types";
 import supabase from "../utils/supabase";
 import adminStyles from "../styles/admin.module.css";
@@ -24,6 +24,19 @@ const Admin = () => {
     })();
   }, []);
 
+  const handleClick = () => {
+    (async () => {
+      const { error } = await supabase.auth.signOut();
+
+      if (error) {
+        console.log(error);
+        return;
+      }
+
+      window.location.href = "/";
+    })();
+  };
+
   return (
     <main className={adminStyles.main}>
       <div className={adminStyles.main__title}>
@@ -37,7 +50,13 @@ const Admin = () => {
         modificarne i valori; aggiungerne di nuove.
       </Paragraph>
 
-      <Search setSearchTerm={setSearchTerm} />
+      <Input
+        placeholder="Cerca un'edizione per titolo, mese o anno"
+        className={adminStyles.search_bar}
+        onChange={(e) => {
+          setSearchTerm(e.target.value);
+        }}
+      />
 
       <div className={adminStyles.card__container}>
         {periodicals.map((periodical, index) => {
@@ -60,6 +79,13 @@ const Admin = () => {
           Aggiungi
         </Button>
       </a>
+
+      <Button
+        theme={`${adminStyles.dark_theme} ${adminStyles.signOut_btn}`}
+        onClick={handleClick}
+      >
+        Esci
+      </Button>
     </main>
   );
 };

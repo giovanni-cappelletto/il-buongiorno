@@ -12,3 +12,8 @@ export type DialogInfo = {
   isOpen: boolean;
   periodical: Data;
 };
+
+export type UserInfo = {
+  email: string,
+  password: string
+}

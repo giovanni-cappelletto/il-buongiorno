@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Data } from "../utils/types";
 import Button from "./Button";
+import Input from "./Input";
 import {
   insertPeriodicalInfos,
   insertPeriodicalFiles,
@@ -11,11 +12,11 @@ import adminStyles from "../styles/admin.module.css";
 const Form = ({
   periodical,
   setPeriodical,
-  notify
+  notify,
 }: {
   periodical: Data;
   setPeriodical: (periodical: Data) => void;
-  notify: (prop: string) => void
+  notify: (prop: string, err?: string) => void;
 }) => {
   const thumbnailRef = useRef<HTMLInputElement>(null);
   const pdfRef = useRef<HTMLInputElement>(null);
@@ -25,12 +26,12 @@ const Form = ({
     prop: string
   ) => {
     if (!e.target.files) {
-      notify('err')
+      notify("", "Sembra che il file non sia stato caricato correttamente");
       return;
     }
 
     setPeriodical({ ...periodical, [prop]: e.target.files[0] });
-    notify(prop)
+    notify(prop);
   };
 
   const handleChangeNumber = (
@@ -161,43 +162,42 @@ const Form = ({
       <Button
         theme={`${adminStyles.accent_theme} ${adminStyles.save_btn}`}
         onClick={() => {
-          insertPeriodicalInfos(periodical);
+          if (!periodical.thumbnail) {
+            notify("", "La copertina non è stata inserita correttamente");
+            return;
+          }
+
+          if (!periodical.pdf) {
+            notify("", "Il PDF non è stato inserito correttamente");
+            return;
+          }
+
+          console.log(periodical);
+
+          insertPeriodicalInfos(periodical, notify);
 
           if (periodical.thumbnail) {
             insertPeriodicalFiles(
               "thumbnail",
               periodical.thumbnail,
-              periodical.year
+              periodical.year,
+              notify
             );
           }
 
           if (periodical.pdf) {
-            insertPeriodicalFiles("pdf", periodical.pdf, periodical.year);
+            insertPeriodicalFiles(
+              "pdf",
+              periodical.pdf,
+              periodical.year,
+              notify
+            );
           }
         }}
       >
         Salva
       </Button>
     </form>
-  );
-};
-
-const Input = ({
-  text,
-  placeholder,
-  className,
-  onChange,
-}: {
-  text: string;
-  placeholder: string;
-  className?: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}) => {
-  return (
-    <div className={`${adminStyles.input} ${className}`}>
-      <span>{text}:</span>
-      <input type="text" placeholder={placeholder} onChange={onChange} />
-    </div>
   );
 };
 

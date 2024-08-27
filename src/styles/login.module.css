@@ -1,0 +1,46 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.section {
+  min-height: 100vh;
+}
+
+.image_section {
+  display: grid;
+  place-items: center;
+  min-width: 50vw;
+  background-color: hsl(34, 44%, 78%);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-block-start: 20px;
+  max-width: 450px;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+}
+
+.login_img {
+  max-width: 400px;
+  width: 100%;
+}
+
+@media screen and (max-width: 700px) {
+  .main {
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+  }
+
+  .section {
+    min-height: 50vw;
+  }
+}

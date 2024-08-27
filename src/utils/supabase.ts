@@ -18,12 +18,13 @@ const insertPeriodicalInfos = async ({
   edition: number;
   year: number;
   pages: number;
-}) => {
+}, notify: (prop: string, err?: string) => void) => {
   const { error } = await supabase
     .from("periodical")
     .insert({ title, month, edition, year, pages });
 
   if (error) {
+    notify("", "Alcune informazioni inserite potrebbero già essere presenti nel database.")  
     console.log(error);
   }
 };
@@ -31,7 +32,8 @@ const insertPeriodicalInfos = async ({
 const insertPeriodicalFiles = async (
   type: string,
   file: File,
-  year: number
+  year: number,
+  notify: (prop: string, err?: string) => void
 ) => {
   const path =
     type === "pdf"
@@ -46,6 +48,7 @@ const insertPeriodicalFiles = async (
     });
 
   if (error) {
+    notify("", "Il file caricato non va bene. Controlla che non sia già stato inserito.")  
     console.log(error);
   }
 };
