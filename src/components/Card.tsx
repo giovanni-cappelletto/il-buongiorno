@@ -1,10 +1,17 @@
 import Property from "./Property";
 import Button from "./Button";
-import { Data } from "../utils/types";
+import { Data, DialogInfo } from "../utils/types";
 import getAssets from "../utils/getAssets";
+import supabase from "../utils/supabase";
 import adminStyles from "../styles/admin.module.css";
 
-const Card = ({ periodical }: { periodical: Data }) => {
+const Card = ({
+  periodical,
+  setOpenEditMode,
+}: {
+  periodical: Data;
+  setOpenEditMode: (openEditMode: DialogInfo) => void;
+}) => {
   return (
     <div className={adminStyles.card}>
       <div className={adminStyles.card__content}>
@@ -15,7 +22,47 @@ const Card = ({ periodical }: { periodical: Data }) => {
         <Property text={"Mese"} value={periodical.month} />
         <Property text={"Anno"} value={periodical.year} />
 
-        <Button theme={adminStyles.dark_theme}>Modifica</Button>
+        <div className={adminStyles.btn__container}>
+          <Button
+            theme={adminStyles.dark_theme}
+            onClick={() => {
+              setOpenEditMode({ isOpen: true, periodical });
+            }}
+          >
+            Modifica
+          </Button>
+          <Button
+            theme={adminStyles.accent_theme}
+            onClick={() => {
+              (async () => {
+                // Deletes row
+                const response = await supabase
+                  .from("periodical")
+                  .delete()
+                  .eq("edition", periodical.edition);
+
+                console.log(`Deleting row: ${response}`);
+
+                // Deletes thumbnail and PDF
+                const { data, error } = await supabase.storage
+                  .from("periodicals")
+                  .remove([
+                    `thumbnails/${periodical.year}/${periodical.month}.png`,
+                    `pdf/${periodical.year}/${periodical.month}.pdf`,
+                  ]);
+
+                if (error) {
+                  console.log(error);
+                  return;
+                }
+
+                window.location.href = "/";
+              })();
+            }}
+          >
+            Elimina
+          </Button>
+        </div>
       </div>
 
       <a

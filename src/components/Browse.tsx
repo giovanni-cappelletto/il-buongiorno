@@ -53,7 +53,7 @@ const Dialog = ({
   const { title, edition, pages, year } = dialogInfo.periodical;
 
   return (
-    <dialog open={dialogInfo.isOpen}>
+    <dialog open={dialogInfo.isOpen} className={homeStyles.dialog}>
       <div>
         <h1 className={homeStyles.dialog__title}>{title}</h1>
         <div

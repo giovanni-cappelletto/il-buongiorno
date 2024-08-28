@@ -45,12 +45,11 @@ const Add = () => {
         <h3 className={adminStyles.chapter__title}>Inserisci i dati</h3>
 
         <Paragraph className={adminStyles.main__desc}>
-          Per effettuare questa operazione, assicurati di{" "}
-          <a href="https://www.ilovepdf.com/it/comprimere_pdf" target="_blank">
-            comprimere il PDF
+          Assicurati di leggere la{" "}
+          <a href="/documentazione" target="_blank">
+            documentazione
           </a>{" "}
-          in modo da ridurne la dimensione prepara una foto della copertian di
-          dimensione ...x...
+          prima di proseguire con i passaggi qui sotto.
         </Paragraph>
 
         <Form

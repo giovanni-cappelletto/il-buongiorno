@@ -77,6 +77,8 @@ const Login = () => {
         <Button theme={adminStyles.dark_theme} onClick={handleClick}>
           Entra
         </Button>
+
+        <ToastContainer className={adminStyles.toast__container} />
       </section>
 
       <section
@@ -87,8 +89,6 @@ const Login = () => {
           alt="Login image"
           className={loginStyles.login_img}
         />
-
-        <ToastContainer className={adminStyles.toast__container} />
       </section>
     </main>
   );

@@ -6,7 +6,7 @@ import {
   insertPeriodicalInfos,
   insertPeriodicalFiles,
 } from "../utils/supabase";
-import findMonth from "../utils/findMonth";
+import handleChangeNumber from "../utils/handleChangeNumber";
 import adminStyles from "../styles/admin.module.css";
 
 const Form = ({
@@ -32,41 +32,6 @@ const Form = ({
 
     setPeriodical({ ...periodical, [prop]: e.target.files[0] });
     notify(prop);
-  };
-
-  const handleChangeNumber = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    prop: string,
-    minLength?: number,
-    maxLength?: number,
-    isMonth?: boolean
-  ): void => {
-    let newValue: number | string;
-
-    if (!Number(e.target.value) && e.target.value !== "0") {
-      e.target.value = "";
-      return;
-    }
-
-    // Length check
-    if (minLength && e.target.value.length < minLength) {
-      return;
-    }
-
-    if (maxLength && e.target.value.length > maxLength) {
-      return;
-    }
-
-    if (isMonth) {
-      newValue = findMonth(Number(e.target.value));
-    } else {
-      newValue = Math.abs(Number(e.target.value));
-    }
-
-    setPeriodical({
-      ...periodical,
-      [prop]: newValue,
-    });
   };
 
   return (
@@ -104,12 +69,16 @@ const Form = ({
           <Input
             text="Edizione"
             placeholder="2"
-            onChange={(e) => handleChangeNumber(e, "edition")}
+            onChange={(e) =>
+              handleChangeNumber(e, "edition", periodical, setPeriodical)
+            }
           />
           <Input
             text="Pagine"
             placeholder="40"
-            onChange={(e) => handleChangeNumber(e, "pages")}
+            onChange={(e) =>
+              handleChangeNumber(e, "pages", periodical, setPeriodical)
+            }
           />
         </div>
 
@@ -118,13 +87,23 @@ const Form = ({
             text="Mese"
             placeholder="11"
             onChange={(e) => {
-              handleChangeNumber(e, "month", 1, 2, true);
+              handleChangeNumber(
+                e,
+                "month",
+                periodical,
+                setPeriodical,
+                1,
+                2,
+                true
+              );
             }}
           />
           <Input
             text="Anno"
             placeholder="2022"
-            onChange={(e) => handleChangeNumber(e, "year", 4, 4)}
+            onChange={(e) =>
+              handleChangeNumber(e, "year", periodical, setPeriodical, 4, 4)
+            }
           />
         </div>
 
@@ -171,8 +150,6 @@ const Form = ({
             notify("", "Il PDF non è stato inserito correttamente");
             return;
           }
-
-          console.log(periodical);
 
           insertPeriodicalInfos(periodical, notify);
 

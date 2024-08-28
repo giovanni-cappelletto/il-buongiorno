@@ -100,6 +100,22 @@ body {
   background-color: var(--secondary-clr) !important;
 }
 
+/* Dialog */
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  opacity: 1;
+  z-index: 20;
+  transform: translate(-50%, -50%);
+  padding: 20px 30px;
+  min-width: 400px;
+  max-width: 800px;
+  width: 80vw;
+  color: var(--secondary-clr);
+  transition: opacity 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 /* Properties */
 .dialog__property:first-of-type {
   margin-block-start: 15px;

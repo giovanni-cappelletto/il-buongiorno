@@ -1,0 +1,10 @@
+.main__desc {
+  text-align: justify;
+  hyphens: auto;
+  max-width: none;
+  width: 100%;
+}
+
+.main__desc a {
+  color: var(--secondary-clr);
+}

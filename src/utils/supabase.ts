@@ -51,6 +51,8 @@ const insertPeriodicalFiles = async (
     notify("", "Il file caricato non va bene. Controlla che non sia già stato inserito.")  
     console.log(error);
   }
+
+  window.location.href = "/admin"
 };
 
 export default supabase;

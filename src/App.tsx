@@ -4,6 +4,7 @@ import Home from "./pages/home";
 import Admin from "./pages/admin";
 import Login from "./pages/login";
 import Add from "./pages/add";
+import Documentation from "./pages/documentation";
 import { Session } from "@supabase/supabase-js";
 import supabase from "./utils/supabase";
 import "./App.css";
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/documentazione" element={<Documentation />} />
         <Route path="/admin" element={<Login />} />
         <Route path="/admin/nuova edizione" element={<Login />} />
       </Routes>
@@ -33,6 +35,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
+      <Route path="/documentazione" element={<Documentation />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/admin/nuova edizione" element={<Add />} />
     </Routes>
