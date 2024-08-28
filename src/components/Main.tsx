@@ -17,7 +17,10 @@ const Main = () => {
 
   useEffect(() => {
     (async () => {
-      const { data, error } = await supabase.from("periodical").select("*");
+      const { data, error } = await supabase
+        .from("periodical")
+        .select("*")
+        .order("edition", { ascending: true });
 
       if (error) {
         throw error;
