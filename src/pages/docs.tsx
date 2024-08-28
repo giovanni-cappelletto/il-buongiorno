@@ -8,7 +8,7 @@ const Docs = () => {
     <main className={adminStyles.main}>
       <div className={adminStyles.main__title}>
         <Breadcrumb />
-        <h1 className="title">Documentazione</h1>
+        <h1 className="title">Docs</h1>
       </div>
 
       <h3 className={adminStyles.chapter__title}>Aggiungere nuove edizioni</h3>

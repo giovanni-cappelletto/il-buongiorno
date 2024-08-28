@@ -46,7 +46,7 @@ const Add = () => {
 
         <Paragraph className={adminStyles.main__desc}>
           Assicurati di leggere la{" "}
-          <a href="/documentazione" target="_blank">
+          <a href="/docs" target="_blank">
             documentazione
           </a>{" "}
           prima di proseguire con i passaggi qui sotto.
