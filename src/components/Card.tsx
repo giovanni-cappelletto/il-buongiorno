@@ -44,7 +44,7 @@ const Card = ({
                 console.log(`Deleting row: ${response}`);
 
                 // Deletes thumbnail and PDF
-                const { data, error } = await supabase.storage
+                const { error } = await supabase.storage
                   .from("periodicals")
                   .remove([
                     `thumbnails/${periodical.year}/${periodical.month}.png`,
